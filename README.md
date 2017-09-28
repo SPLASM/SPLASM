@@ -1,13 +1,13 @@
-# Project Name
+# [Product Name TBD]
 
-> Pithy project description
+Platform for beginner developers to track course progress and connect with other beginning developers.
 
 ## Team
 
-  - teamMember
-  - teamMember
-  - teamMember
-  - teamMember
+  - Alex Simrell
+  - Marcus Polk
+  - Shane Laymance
+  - Shwetha Patrachari
 
 ## Table of Contents
 
@@ -21,15 +21,11 @@
 
 ## Usage
 
-> Some usage instructions
+This repo is meant to be used in-browser by a target audience of beginning developers.
 
 ## Requirements
 
 - Node 6.4.x
-- Redis 2.6.x
-- Postgresql 9.1.x
-- etc
-- etc
 
 ## Development
 
@@ -42,10 +38,9 @@ npm install -g bower
 npm install
 bower install
 ```
-
 ### Roadmap
 
-View the project roadmap [here](LINK_TO_DOC)
+View the project roadmap [here](ROADMAP.md)
 
 
 ## Contributing
