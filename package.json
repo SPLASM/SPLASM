@@ -31,9 +31,11 @@
     "babel-preset-react": "^6.24.1",
     "babel-register": "^6.7.2",
     "chai": "^4.1.2",
+    "css-loader": "^0.28.7",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
     "mocha": "^3.5.3",
     "nodemon": "^1.12.1",
+    "style-loader": "^0.18.2",
     "webpack": "^3.6.0"
   },
   "babel": {

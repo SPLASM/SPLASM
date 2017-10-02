@@ -3,14 +3,11 @@ const app = express();
 const router = require('./router.js');
 const db = require('../db/mongo/index.js');
 
-app.use(express.static('../client'));
+const portNum = 3000;
 
+app.use(express.static(__dirname + '/../client'));
 app.use('/', router);
 
-app.get('/', function (req, res) {
-  res.send();
-});
+app.get('/', (req, res) => res.send());
 
-app.listen(3000, function () {
-  console.log('app listening on port 3000.');
-});
+app.listen(portNum, () => console.log(`App listening on port ${portNum}`));

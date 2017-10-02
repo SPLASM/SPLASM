@@ -1,0 +1,9 @@
+body {
+  background-color: #f3f3f3;
+}
+
+h2 {
+  border: 2px solid gray;
+  text-align: center;
+  padding: 10px
+}
