@@ -19,9 +19,9 @@ passport.use(new LocalStrategy(
       }
       // else user and password match
       return done(null, userObj);
-    }).catch(err) => {
-    	console.error(err);
-    };
+    }).catch((err) => {
+      console.error(err);
+    });
   }
 ));
 
