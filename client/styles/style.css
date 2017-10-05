@@ -1,0 +1,33 @@
+body {
+  background-color: #f3f3f3;
+  padding-top: 30px;
+}
+
+/*h2 {
+  border: 2px solid gray;
+  text-align: center;
+  padding: 10px
+}*/
+
+.courselist {
+  list-style: none;
+  padding: 0;
+  position: absolute;
+  margin-top: 35px;
+  background: white;
+  z-index: 5;
+}
+
+.courselist li {
+  margin: 0;
+  padding:10px 0;
+  border-top: 1px solid gray;
+}
+
+.courselist li:first-child {
+  border-top: none !important;
+}
+
+select {
+  -webkit-appearance: none;
+}
