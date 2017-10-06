@@ -28,4 +28,7 @@
 
 ## Sprint 3 (MVP) - Fri, Sat, & Sun
 
-- TBD
+- Allow users to remove courses
+- Allow users to edit profile
+- Flesh out the front end
+- Allow users to add friends

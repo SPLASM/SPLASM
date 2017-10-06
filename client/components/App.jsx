@@ -13,17 +13,24 @@ class App extends React.Component {
     this.state = {
       activeUser: { id: null, name: '', courses: [], interests: [], picture: '', createdAt: '' },
       courses: [],
-      redirect: false
+      redirect: false,
+      edit: false
     };
   }
 
   componentWillReceiveProps(nextProps) {
     this.fetchUser.call(this, nextProps.match.params.username);
+    this.setState({
+      edit: nextProps.location.pathname.startsWith('/profile/')
+    });
   }
 
   componentDidMount() {
     this.fetchUser.call(this, this.props.match.params.username);
     this.fetchAllCourses.call(this);
+    this.setState({
+      edit: this.props.location.pathname.startsWith('/profile/')
+    });
   }
 
   fetchAllCourses() {
@@ -46,7 +53,6 @@ class App extends React.Component {
       url: `./api/courses/${courseName}`,
       type: 'POST',
       success: (res) => {
-        console.log(JSON.parse(res));
         let parsedRes = JSON.parse(res);
         this.setState({
           activeUser: parsedRes[0]
@@ -87,10 +93,16 @@ class App extends React.Component {
       return <Redirect to='/notfound'/>
     }
 
+    let edit = '';
+    if(this.state.edit) {
+      edit = 'Can edit this profile! Whoop! REPLACE THIS VALUE WITH EDIT BUTTON COMPONENT, THEN PUT {edit} ANYWHERE IN THE APP DOM COMPONENT BELOW. (If you need to render the edit button inside of profile, pass down the state property "edit" as a prop to that component and render the edit button conditionally based on that prop -- in the same way as done here)';
+    }
+
     return (
       <div className="container col-xs-12">
+        {edit}
         <div className="col-sm-3 col-xs-12">
-          <Profile user={this.state.activeUser}/>
+          <Profile user={this.state.activeUser} edit={this.state.edit}/>
         </div>
         <div id="social" className="col-sm-6 col-xs-12">
           <Courses user={this.state.activeUser} allCourses={this.state.courses} addCourse={this.addCourse.bind(this)}/>

@@ -6,6 +6,7 @@ var logout = require('./routes/logout.js');
 var signup = require('./routes/signup.js');
 var userdata = require('./routes/userdata.js');
 var courses = require('./routes/courses.js');
+var edit = require('./routes/edit.js');
 
 router.post('*/api/courses/:courseName', courses.post);
 router.get('*/api/courses', courses.get);
@@ -17,6 +18,7 @@ router.get('/login', login.get);
 router.post('/signup', signup.post);
 router.get('/signup', signup.get);
 router.get('/logout', logout.get);
+router.put('/edit', edit.put);
 
 
 router.get('/*', (req, res) => {

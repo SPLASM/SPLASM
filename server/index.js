@@ -7,7 +7,6 @@ const router = require('./router.js');
 const sequelize = require('../db/sql/index.js');
 const env = require('dotenv').load();
 const path = require('path');
-const loggedIn = require('./middleware/loggedIn.js');
 
 const port = process.env.PORT || 3000;
 
@@ -20,7 +19,7 @@ app.use(session({secret: 'splasm', resave: true, saveUninitialized: true})); //s
 app.use(passport.initialize());
 app.use(passport.session()); //persistent login sessions
 
-app.get('/', loggedIn, (req, res) => {
+app.get('/', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../client/index.html'));
 });
 

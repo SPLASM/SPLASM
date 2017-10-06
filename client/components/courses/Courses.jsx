@@ -7,8 +7,10 @@ class Courses extends React.Component {
   }
 
   requestToAddCourse(event) {
-    if (event.target.value !== 'Add course') {
-      this.props.addCourse(event.target.value);
+    let course = event.target.value;
+    if (course !== 'Add course') {
+      course = course.replace('/','ASCII47');
+      this.props.addCourse(course);
     }
   }
 

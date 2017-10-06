@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import $ from 'jquery';
 
-class AppRoutes extends React.Component {
+class Nav extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -34,20 +34,49 @@ class AppRoutes extends React.Component {
     });
   }
 
+  logout() {
+    $.ajax({
+      url: '/logout',
+      success: res => {
+        console.log('You are now logged out.');
+        window.location.reload();
+      },
+      error: err => console.error(err)
+    });
+  }
+
   render() {
     return (<header className="col-xs-12">
-      <nav>
-        <ul>
-          <li>Signed in as {this.props.user}</li>
-          <li><Link to='/' replace>Home</Link></li>
-          <li><Link to={'/profile/users/' + this.props.user} replace>Profile</Link></li>
-          <li>
-            <form action="/logout" method="get">
-              <div>
-                <input type="submit" value="Logout"/>
-              </div>
-            </form>
-          </li>
+      <nav className="navbar navbar-default">
+        <div className="container-fluid">
+          <div className="navbar-header">
+            <a href="/" className="navbar-brand">NodeBook</a>
+          </div>
+        </div>
+        { !this.props.user
+          ? <ul className="nav navbar-nav navbar-right">
+            <li>
+              <Link to="/signup">
+                <span className="glyphicon glyphicon-user"></span> Sign Up
+              </Link>
+            </li>
+            <li>
+              <Link to="/login">
+                <span className="glyphicon glyphicon-log-in"></span> Login
+              </Link>
+            </li>
+          </ul>
+          : <ul className="nav navbar-nav navbar-right">
+            <li><Link to={'/profile/users/' +
+              this.props.user}>Profile</Link></li>
+            <li>
+              <Link to="" onClick={this.logout}>
+                <span className="glyphicon glyphicon-log-out"></span> Logout
+              </Link>
+            </li>
+          </ul>
+        }
+        <ul className="nav navbar-nav navbar-right">
           <li>
             <input list="users" name="user" value={this.state.userVal} onChange={this.changeUserVal.bind(this)}/>
             <datalist id="users">
@@ -65,4 +94,4 @@ class AppRoutes extends React.Component {
   }
 }
 
-export default AppRoutes;
+export default Nav;

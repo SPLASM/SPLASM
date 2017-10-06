@@ -5,7 +5,7 @@ const User = require('../../db/sql/models/User.js');
 var userdata = {
   get: (req, res) => {
     if (req.user === undefined) {
-      res.send('no user data');
+      res.send('');
     } else {
       User.findById(req.session.passport.user, {
         attributes: ['name']
@@ -15,7 +15,7 @@ var userdata = {
         })
         .catch((err) => {
           console.error('Error finding user by session');
-        })
+        });
     }
   }
 };
