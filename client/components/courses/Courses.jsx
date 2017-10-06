@@ -4,31 +4,22 @@ import CourseListItem from './CourseListItem.jsx';
 class Courses extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      courseView: false
-    };
   }
 
-  toggleCoursesView() {
-    this.setState({
-      courseView: !this.state.courseView
-    });
+  requestToAddCourse(event) {
+    if (event.target.value !== 'Add course') {
+      this.props.addCourse(event.target.value);
+    }
   }
 
   render() {
-    let courselist = '';
-    if (this.state.courseView) {
-      courselist = (<ul className="courselist col-xs-12 text-center">
-        {this.props.allCourses.map((course, index) => {
-          return <li key={index}>{course.name}</li>
-        })}
-      </ul>);
-      // only display courses that have not already been added
-    }
-
     return (<div>
-      <button onClick={this.toggleCoursesView.bind(this)} className="btn btn-default col-xs-12">Add course</button>
-      {courselist}
+      <select className="col-xs-12" onChange={this.requestToAddCourse.bind(this)}>
+        <option>Add course</option>
+        {this.props.allCourses.map((course, index) => {
+          return <option key={course.id}>{course.name}</option>
+        })}
+      </select>
       <ul style={{listStyle: 'none'}}>
         {this.props.user.courses.map((course, index) => {
           return <CourseListItem course={course} key={index}/>

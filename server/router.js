@@ -5,7 +5,10 @@ var login = require('./routes/login.js');
 var logout = require('./routes/logout.js');
 var signup = require('./routes/signup.js');
 var userdata = require('./routes/userdata.js');
+var courses = require('./routes/courses.js');
 
+router.post('*/api/courses/:courseName', courses.post);
+router.get('*/api/courses', courses.get);
 router.get('*/api/userdata', userdata.get);
 router.get('*/api/users', users.getAllUsers);
 router.get('*/users/api/:username', users.getUser);

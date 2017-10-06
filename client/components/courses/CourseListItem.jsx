@@ -10,7 +10,7 @@ const CourseListItem = (props) =>
     </div>
     <div className="col-sm-3 col-xs-12">
       <label>Status:</label>
-      <select className="col-xs-12" defaultValue={props.course.status}>
+      <select className="col-xs-12" defaultValue={props.course.usertocourse.status}>
         <option>100%</option>
         <option>75%</option>
         <option>50%</option>

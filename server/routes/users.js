@@ -2,6 +2,7 @@ const Sequelize = require('sequelize');
 const sequelize = require('../../db/sql/index.js');
 const User = require('../../db/sql/models/User.js');
 const Course = require('../../db/sql/models/Course.js');
+const UserToCourse = require('../../db/sql/models/UserToCourse.js');
 
 var users = {
   getUser: (req, res) => {
@@ -16,7 +17,7 @@ var users = {
         res.send((JSON.stringify(result)));
       })
       .catch((err) => {
-        console.error('Error finding user');
+        console.error('Error finding user', err);
       });
   },
   getAllUsers: (req, res) => {

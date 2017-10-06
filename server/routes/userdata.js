@@ -7,9 +7,8 @@ var userdata = {
     if (req.user === undefined) {
       res.send('');
     } else {
-      User.findOne({
-        attributes: ['name'],
-        where: {id: req.session.passport.user}
+      User.findById(req.session.passport.user, {
+        attributes: ['name']
       })
         .then((results) => {
           res.send(results.name);
