@@ -6,9 +6,10 @@ const UserToCourse = require('../../db/sql/models/UserToCourse.js');
 
 const courses = {
   post: (req, res) => {
+    let courseName = req.params.courseName.split('&#47;').join('/');
     User.findById(req.session.passport.user)
       .then(user => {
-        Course.findOne({ where: { name: req.params.courseName } })
+        Course.findOne({ where: { name: courseName } })
           .then(course => {
             if (!course) {
               throw new Error();
