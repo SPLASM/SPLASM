@@ -1,4 +1,5 @@
 import React from 'react';
+import Edit from '../edit/Edit.jsx';
 
 
 class Profile extends React.Component {
@@ -10,6 +11,13 @@ class Profile extends React.Component {
     let coursesComplete = this.props.user.courses.reduce((tot, course) => {
       return course.status === '100%' ? tot + 1 : tot;
     }, 0);
+
+    let edit = '';
+    if(this.props.edit) {
+      edit = <Edit field="picture">
+        Add a picture here
+      </Edit>;
+    }
 
     return (<div style={{wordWrap: 'break-word'}}>
       <img src={this.props.user.picture} className="col-sm-12 col-sm-offset-0 col-xs-10 col-xs-offset-1"/>
@@ -24,6 +32,9 @@ class Profile extends React.Component {
         <div className="profileItem">
           Courses complete: {coursesComplete}
         </div>
+      </div>
+      <div>
+        {edit}
       </div>
     </div>)
   }
