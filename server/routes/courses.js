@@ -63,8 +63,10 @@ const courses = {
             if (!course) {
               throw new Error();
             } else {
-              user.removeCourse(course);
-              return user.addCourse(course, {through: { status: req.query.status } });
+              user.removeCourse(course)
+                .then(() => {
+                  return user.addCourse(course, {through: { status: req.query.status } });
+                });
             }
           })
           .then(() => {
