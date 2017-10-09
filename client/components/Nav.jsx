@@ -47,58 +47,61 @@ class Nav extends React.Component {
   }
 
   render() {
-    return (<header>
-      <nav className="navbar navbar-default main-nav">
-        <div className="container-fluid navbar-header">
-          <img src={icon}/>
-          <a href="/" className="navbar-brand">nodebook</a>
-          <ul className="nav navbar-nav action-list">
-            <li className="container col-xs-2">
-              <div className="input-group stylish-input-group">
-                <span className="input-group-addon">
+    return (
+      <header>
+        <nav className="main-nav navbar navbar-default">
+          <div className="container-fluid col-lg-8 col-lg-offset-2">
+            <div className="navbar-header">
+              <a href="/" className="navbar-brand"><img src={icon}/></a>
+              <a href="/" className="navbar-brand brand-text">nodebook</a>
+            </div>
+            <form className="navbar-form navbar-left">
+              <div className="input-group">
+                <input list="users" name="user" value={this.state.userVal} onChange={this.changeUserVal.bind(this)} type="text" className="form-control" placeholder="Traverse profiles"/>
+                <div className="input-group-btn">
                   <Link replace to={'/search/users/' + this.state.userVal}>
-                    <button type="submit">
-                      <span className="glyphicon glyphicon-search"></span>
+                    <button className="btn btn-default" type="submit">
+                      <i className="glyphicon glyphicon-search"></i>
                     </button>
                   </Link>
-                </span>
-                <input list="users" name="user" value={this.state.userVal} onChange={this.changeUserVal.bind(this)} type="text" className="form-control" placeholder="Traverse profiles"/>
+                </div>
               </div>
-            </li>
+            </form>
             { !this.props.user
-              ? <div className="nav navbar-nav navbar-right action-list inline-list">
-                <li className="action">
+              ? <ul className="nav navbar-nav navbar-right">
+                <li>
                   <Link to="/signup">
                     <span className="glyphicon glyphicon-user"></span> Sign Up
                   </Link>
                 </li>
-                <li className="action">
+                <li>
                   <Link to="/login">
                     <span className="glyphicon glyphicon-log-in"></span> Login
                   </Link>
                 </li>
-              </div>
-              : <div className="nav navbar-nav navbar-right action-list inline-list">
+              </ul>
+              : <ul className="nav navbar-nav navbar-right">
                 <li>
                   <Link to={'/profile/users/' + this.props.user}>
                     <span className="glyphicon glyphicon-tree-deciduous"></span>  Profile
-                  </Link></li>
+                  </Link>
+                </li>
                 <li>
                   <Link to="" onClick={this.logout}>
                     <span className="glyphicon glyphicon-log-out"></span> Logout
                   </Link>
                 </li>
-              </div>
+              </ul>
             }
-          </ul>
-        </div>
-      </nav>
-      <datalist id="users">
-        {this.state.usersList.map((username, index) => {
-          return (<option key={index} value={username}/>);
-        })}
-      </datalist>
-    </header>);
+          </div>
+        </nav>
+        <datalist id="users">
+          {this.state.usersList.map((username, index) => {
+            return (<option key={index} value={username}/>);
+          })}
+        </datalist>
+      </header>
+    );
   }
 }
 
