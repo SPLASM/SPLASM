@@ -32,3 +32,4 @@
 - Allow users to edit profile
 - Flesh out the front end
 - Allow users to add friends
+- Add more testing
